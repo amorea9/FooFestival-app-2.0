@@ -1,0 +1,54 @@
+.log-in-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+.form-wrapper {
+  position: relative;
+  border: 1px solid $white;
+  border-radius: 16px;
+  padding: 1rem;
+  height: 20rem;
+  padding-top: 2rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+}
+.email-input,
+.ticket-number-input {
+  display: flex;
+  flex-direction: column;
+  width: 66%;
+}
+.log-in-button {
+  padding: 0.8rem 4.2rem;
+  border-radius: 12px;
+  border: 1px solid $white;
+  background-color: $grey;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+#email,
+#ticketNumber {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid $orange;
+  height: 35px;
+  color: $white;
+}
+
+.log-in-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  height: 100vh;
+  h1 {
+    text-align: center;
+  }
+}
+form:valid .log-in-button {
+  background-color: $white;
+}

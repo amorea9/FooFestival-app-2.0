@@ -1,0 +1,16 @@
+@mixin flex-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-nav {
+  @include flex-nav;
+  padding: 1rem;
+}
+
+.nav-logo {
+  max-width: 10rem;
+  height: auto;
+}

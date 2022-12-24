@@ -1,0 +1,58 @@
+.SplashContainer {
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-image: url(../media/app-hero-img.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  h1 {
+    display: block;
+    text-align: center;
+    mix-blend-mode: exclusion;
+    font-size: 4.5rem;
+  }
+  h1:last-of-type {
+    padding-bottom: 2rem;
+  }
+}
+
+//mobile media query
+@media screen and (max-width: 830px) {
+  .SplashContainer {
+    h1 {
+      font-size: 4.5rem;
+      overflow: hidden;
+    }
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .SplashContainer {
+    h1 {
+      font-size: 3.5rem;
+      overflow: hidden;
+    }
+    h1:last-of-type {
+      padding-bottom: 1rem;
+      margin-bottom: auto;
+    }
+    .SplashContainer {
+      height: 70vh;
+    }
+  }
+}
+@media screen and (max-width: 315px) {
+  .SplashContainer {
+    h1:last-of-type {
+      font-size: 2.5rem;
+      overflow: hidden;
+      padding-bottom: 1rem;
+      margin-bottom: auto;
+    }
+  }
+}

@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  background-color: $black;
+  color: $white;
+  font-size: 1em;
+  scroll-behavior: smooth;
+}
+p {
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: $h1-font;
+  font-weight: bold;
+  font-size: 2.5rem;
+  line-height: 80%;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: $orange;
+}
+
+h4 {
+  font-size: 1.2rem;
+  color: $grey;
+  font-weight: 400;
+}
+
+button {
+  padding: 0.8rem 4.2rem;
+  border-radius: 12px;
+  border: 1px solid $white;
+  cursor: pointer;
+}
+
+//log out btn top nav
+.log-out-btn {
+  border: $border-white;
+  border-radius: 12px;
+  padding: 0.5rem;
+  padding-inline: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: $white;
+  overflow: hidden;
+  width: fit-content;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+.log-out-btn:hover {
+  border-color: $orange;
+  transition: all 0.3s ease-in;
+}
+
+@media only screen and (max-width: 600px) {
+  .log-out-btn {
+    height: 2.6rem;
+    font-size: 1.15rem;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .log-out-btn {
+    height: 2.4rem;
+    font-size: 1rem;
+  }
+}
+
+//orange arrow
+.bi-arrow-right {
+  filter: invert(63%) sepia(45%) saturate(3893%) hue-rotate(340deg) brightness(104%) contrast(101%);
+}
+//heart icon
+.empty-heart-icon:hover {
+  filter: invert(63%) sepia(45%) saturate(3993%) hue-rotate(330deg) brightness(90%) contrast(85%);
+}
+
+//message on favourites page
+
+.user-message {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 12vh;
+}

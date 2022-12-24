@@ -1,0 +1,127 @@
+.bands-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 1rem;
+  margin-top: 1.3rem;
+}
+.bands-list-comp-wrapper {
+  margin-top: 1.3rem;
+}
+@media only screen and (min-width: 799px) {
+  .bands-list-wrapper {
+    display: grid;
+    justify-content: center;
+    /*  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); */
+    grid-template-columns: 1fr;
+    margin-left: auto;
+    margin-right: auto;
+    width: 66%;
+  }
+  .band-card {
+    width: 50%;
+  }
+}
+.band-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  gap: 4rem;
+  p {
+    margin: 0;
+  }
+}
+.band-card-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.band-card-side-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.band-card {
+  background-color: $dark-grey;
+  padding: 1rem;
+  border-radius: 20px;
+  width: 100%;
+  cursor: pointer;
+  /* box-shadow: 0px 4px 7.5px rgba(255, 128, 44, 0.025); */
+  transition: all 0.3s ease 0s;
+}
+.band-card:hover {
+  /*  box-shadow: 4px 8px rgba(255, 128, 44, 0.5); */
+  box-shadow: rgba(139, 139, 139, 0.2) 0px 7px 10px, rgba(31, 31, 31, 1) 0px 5px 5px;
+}
+//read more btn
+.read-more-btn {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+  min-width: fit-content;
+  padding: 0.8rem 1.6rem;
+  border: 1px solid $white;
+  border-radius: 12px;
+  cursor: pointer;
+}
+@media only screen and (min-width: 600px) {
+  .read-more-btn-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .read-more-btn {
+    width: fit-content;
+  }
+}
+.read-more-btn:hover {
+  border: 1px solid $orange;
+  transition: all 0.3s ease-in;
+}
+
+.bands-list {
+  h2 {
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid $orange;
+  }
+  padding-bottom: 1rem;
+  width: 100%;
+}
+.landing-page,
+.program-page,
+.favourite-page,
+#error-page,
+#singleBandPage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: $bottom-nav-spacer;
+}
+#error-page {
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%;
+}
+.landing-page {
+  margin-bottom: 12vh;
+}
+.program-page {
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.favourite-page {
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+}
