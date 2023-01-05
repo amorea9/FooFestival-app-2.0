@@ -55,14 +55,7 @@ function Program(props) {
   let allStagesSunday = jotunheimSunday.concat(midgardSunday, vanaheimSunday);
 
   //full schedule all days all stages
-  const fullSchedule = allStagesMonday.concat(
-    allStagesTuesday,
-    allStagesWednesday,
-    allStagesThursday,
-    allStagesFriday,
-    allStagesSaturday,
-    allStagesSunday
-  );
+  const fullSchedule = allStagesMonday.concat(allStagesTuesday, allStagesWednesday, allStagesThursday, allStagesFriday, allStagesSaturday, allStagesSunday);
 
   //trying to add property for each day
   let scheduleWithDays;
@@ -188,7 +181,7 @@ function Program(props) {
           <StageFiltering stageChanged={stageChanged} />
         </div>
         <div className="search-nav">
-          <input id="searchField" type="text" placeholder="search here" onKeyUp={searchBand} />
+          <input id="searchField" type="text" placeholder="Type here to search" onKeyUp={searchBand} />
           <img className="search-icon" id="searchIcon" src={searchIcon} alt="search icon" />
         </div>
       </div>

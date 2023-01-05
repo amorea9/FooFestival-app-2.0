@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-top: 1.3rem;
 }
 .bands-list-comp-wrapper {
@@ -59,8 +59,11 @@
 }
 .band-card:hover {
   /*  box-shadow: 4px 8px rgba(255, 128, 44, 0.5); */
-  box-shadow: rgba(139, 139, 139, 0.2) 0px 7px 10px, rgba(31, 31, 31, 1) 0px 5px 5px;
+  // box-shadow: rgba(139, 139, 139, 0.2) 0px 7px 10px, rgba(31, 31, 31, 1) 0px 5px 5px;
+  // box-shadow: rgb(255, 128, 44) 0px 3px 3px, rgb(183, 179, 179) 0px 3px 3px;
+  box-shadow: rgb(132, 132, 132) 0px 5px 5px, rgb(159, 159, 159) 0px 3px 3px;
 }
+
 //read more btn
 .read-more-btn {
   display: flex;
@@ -70,9 +73,11 @@
   width: 100%;
   min-width: fit-content;
   padding: 0.8rem 1.6rem;
-  border: 1px solid $white;
+  border: 1.5px solid $white;
   border-radius: 12px;
   cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.9rem;
 }
 @media only screen and (min-width: 600px) {
   .read-more-btn-container {
@@ -84,7 +89,7 @@
   }
 }
 .read-more-btn:hover {
-  border: 1px solid $orange;
+  border: 1.5px solid $orange;
   transition: all 0.3s ease-in;
 }
 
