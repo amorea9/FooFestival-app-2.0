@@ -1,6 +1,29 @@
 import BandCard from "./BandCard";
+import { useState } from "react";
 
 function BandsList(props) {
+  // const [favourite, setFavourite] = useState([]);
+  // //const [favouriteStatus, setFavouriteStatus] = useState(false);
+
+  // const addBandToFavourites = (e) => {
+  //   console.log(e.target.name);
+
+  //   const favouriteList = props.filteredList.filter((item) => {
+  //     item.bandName === e.target.name;
+  //     console.log("bandfav", item.bandName);
+  //   });
+  //   setFavourite(favouriteList);
+  //   // const favouriteList = props.filteredList.map((item) => {
+  //   //   if (item.bandName === e.target.name) {
+  //   //     return { ...item, favourite: !item.favourite };
+  //   //   } else {
+  //   //     return { ...item };
+  //   //   }
+  //   // });
+  //   // setFavourite(favouriteList);
+  // };
+  //console.log("favourites", favourite);
+
   return (
     <div className="bands-list">
       {props.filter.stage === "all" && props.filter.day === "all" && props.filter.search ? <h2> Results for "{props.filter.search}"</h2> : props.filter.stage === "all" && props.filter.day === "all" ? <h2>Full lineup</h2> : null}
@@ -16,9 +39,24 @@ function BandsList(props) {
       {props.filter.search && props.filter.day === "Sunday" ? <h2> Results for "{props.filter.search}"</h2> : props.filter.day === "Sunday" ? <h2>Sunday, July 23rd</h2> : null}
       <div className="bands-list-wrapper">
         {props.filteredList.map((show) => {
-          return show.act != "break" ? <BandCard key={show.act} start={show.start} end={show.end} stage={show.stage} day={show.day} bandName={show.act} /> : null;
+          return show.act != "break" ? (
+            <BandCard
+              start={show.start}
+              end={show.end}
+              stage={show.stage}
+              day={show.day}
+              act={show.act}
+              bandName={show.act}
+              key={show.act}
+              id={Date.now()}
+              addBandToFavourites={props.addBandToFavourites}
+              removeBandFromFavourites={props.removeBandFromFavourites}
+              favouriteList={props.favouriteList}
+              data={props.filteredList}
+            />
+          ) : null;
         })}
-      </div>{" "}
+      </div>
     </div>
   );
 }

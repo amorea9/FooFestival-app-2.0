@@ -6,7 +6,7 @@ import "../sass/style.scss";
 import { Outlet } from "react-router-dom";
 import TopNav from "../components/Reusable components/TopNav";
 
-function App() {
+function App(props) {
   //state used to determine if the user is logged in or not
   const [login, setLogin] = useState(false);
   //state for scheduled bands. app knows so that all the routes may know
@@ -27,6 +27,8 @@ function App() {
   const [dateNow, setdateNow] = useState({
     today: 0,
   });
+  //favourite list
+  const [favouriteList, setFavouriteList] = useState([]);
 
   //fetching data
   useEffect(() => {
@@ -216,6 +218,7 @@ function App() {
             schedule: [scheduledBands, setScheduledBands],
             live: [liveNow, setLiveNow],
             date: [dateNow, setdateNow],
+            favourites: [favouriteList, setFavouriteList],
           }}
         />
       )}

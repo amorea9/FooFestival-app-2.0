@@ -9,6 +9,7 @@ import { useState } from "react";
 function Program(props) {
   const {
     schedule: [scheduledBands, setScheduledBands],
+    favourites: [favouriteList, setFavouriteList],
   } = useOutletContext();
 
   const [filter, setFilter] = useState({
@@ -171,6 +172,32 @@ function Program(props) {
     filteredList = scheduleWithStageAndDays.filter((show) => show.act.toLowerCase().includes(filter.search));
   }
 
+  const addBandToFavourites = (e) => {
+    let selectedFav = e.target.name;
+    console.log("target", e.target.name);
+    // const hasDuplicates = (arr) => arr.length !== new Set(arr).size;
+    //if there is a band with same name as bandcard name
+    if (favouriteList.find((band) => band === selectedFav)) {
+      console.log("doesn't exist");
+    } else {
+      // const check = hasDuplicates(favouriteList);
+      // if (check === true) {
+      //   //if there are duplicates, remove the duplicates and set the list
+      //   let favouritesNoDuplicates = [...new Set(favouriteList)];
+      //   setFavouriteList(favouritesNoDuplicates);
+      //   // favouriteTrue(selectedFav);
+      // }
+      //if no duplicates, concat the name of the band
+      setFavouriteList((prevList) => prevList.concat([selectedFav]));
+    }
+  };
+
+  const removeBandFromFavourites = (e) => {
+    let selectedFav = e.target.name;
+    console.log("remove");
+    setFavouriteList((prevList) => prevList.filter((band) => band !== selectedFav));
+  };
+
   return (
     <section className="program-page">
       <h1>Program 2023</h1>
@@ -186,7 +213,7 @@ function Program(props) {
         </div>
       </div>
       <div className="bands-list-comp-wrapper">
-        <BandsList filteredList={filteredList} filter={filter} />
+        <BandsList filteredList={filteredList} filter={filter} addBandToFavourites={addBandToFavourites} {...props} favouriteList={favouriteList} removeBandFromFavourites={removeBandFromFavourites} />
       </div>
     </section>
   );
