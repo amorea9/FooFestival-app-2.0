@@ -41,6 +41,16 @@
   align-items: flex-start;
   gap: 0.5rem;
 }
+.band-page-details-card {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  h4 {
+    border-bottom: none !important;
+    color: $orange;
+  }
+}
 
 .band-card-side-content {
   display: flex;
@@ -63,6 +73,10 @@
   // box-shadow: rgba(139, 139, 139, 0.2) 0px 7px 10px, rgba(31, 31, 31, 1) 0px 5px 5px;
   // box-shadow: rgb(255, 128, 44) 0px 3px 3px, rgb(183, 179, 179) 0px 3px 3px;
   box-shadow: rgb(132, 132, 132) 0px 5px 5px, rgb(159, 159, 159) 0px 3px 3px;
+}
+.band-page-band-card:hover {
+  box-shadow: none;
+  cursor: auto;
 }
 
 //read more btn

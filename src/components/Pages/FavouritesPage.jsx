@@ -4,16 +4,24 @@ import FavouriteCard from "../Reusable components/FavouriteCard";
 
 function Favourites(props) {
   const {
-    favourites: [favouriteList],
+    favourites: [favouriteList, setFavouriteList],
   } = useOutletContext();
   console.log(favouriteList);
+
+  const removeBandFromFavourites = (e) => {
+    let selectedFav = e.target.name;
+    console.log("remove");
+    console.log(selectedFav);
+    setFavouriteList((prevList) => prevList.filter((band) => band !== selectedFav));
+  };
+
   return (
     <section className="favourite-page">
       <h1>Your favourites</h1>
       {favouriteList != "" ? (
         <div className="bands-list-wrapper">
           {favouriteList.map((band) => {
-            return <FavouriteCard bandName={band} favouriteList={favouriteList} key={band} />;
+            return <FavouriteCard bandName={band} removeBandFromFavourites={removeBandFromFavourites} setFavouriteList={setFavouriteList} favouriteList={favouriteList} key={band} />;
           })}
         </div>
       ) : (

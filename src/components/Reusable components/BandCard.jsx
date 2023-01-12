@@ -9,7 +9,7 @@ function BandCard(props) {
 
   const navigate = useNavigate();
   const toBandPage = () => {
-    navigate(`/band-page/${props.bandName === "AC/DC" ? "ACDC" : props.bandName}`, { state: props.bandName });
+    navigate(`/band-page/${props.bandName === "AC/DC" ? "ACDC" : props.bandName}`, { state: { pageName: props.bandName, data: props.data } });
   };
 
   return (

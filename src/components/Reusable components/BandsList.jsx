@@ -1,29 +1,6 @@
 import BandCard from "./BandCard";
-import { useState } from "react";
 
 function BandsList(props) {
-  // const [favourite, setFavourite] = useState([]);
-  // //const [favouriteStatus, setFavouriteStatus] = useState(false);
-
-  // const addBandToFavourites = (e) => {
-  //   console.log(e.target.name);
-
-  //   const favouriteList = props.filteredList.filter((item) => {
-  //     item.bandName === e.target.name;
-  //     console.log("bandfav", item.bandName);
-  //   });
-  //   setFavourite(favouriteList);
-  //   // const favouriteList = props.filteredList.map((item) => {
-  //   //   if (item.bandName === e.target.name) {
-  //   //     return { ...item, favourite: !item.favourite };
-  //   //   } else {
-  //   //     return { ...item };
-  //   //   }
-  //   // });
-  //   // setFavourite(favouriteList);
-  // };
-  //console.log("favourites", favourite);
-
   return (
     <div className="bands-list">
       {props.filter.stage === "all" && props.filter.day === "all" && props.filter.search ? <h2> Results for "{props.filter.search}"</h2> : props.filter.stage === "all" && props.filter.day === "all" ? <h2>Full lineup</h2> : null}

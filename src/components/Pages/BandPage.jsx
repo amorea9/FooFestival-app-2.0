@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BandCard from "../Reusable components/BandCard";
+
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -7,9 +7,12 @@ function BandPage(props) {
   //using this const to render the see more in the band card in the list view but not on the band page view
   const page = "bandPage";
   //have to use location to pass data from the link to the page
-  const location = useLocation();
+  const { state } = useLocation();
+  const { pageName, data } = state;
   //location as current band
-  const currentBand = location.state;
+  const currentBand = state.pageName;
+  const bandsList = state.data;
+
   const [bandDisplayed, setBandDisplayed] = useState({
     name: "",
     members: [],
@@ -43,9 +46,15 @@ function BandPage(props) {
       bio: bandOnDisplay[0].bio,
     });
   }
+
   let logoPath = `https://morning-mountain-4570.fly.dev/logos/${bandDisplayed.logo}`;
 
   //may be https when we change to fly
+  //finding the data for the currently displaying band
+  const bandData = bandsList.find((band) => {
+    band.act === bandDisplayed.name;
+    return band;
+  });
 
   return (
     <section id="singleBandPage">
@@ -60,22 +69,63 @@ function BandPage(props) {
             Genre : <span>{bandDisplayed.genre}</span>
           </p>
           <div className="members-section">
-            <p> Members :</p>
-            <ul className="members-list" aria-label="Members:">
-              {bandDisplayed.members.map((member) => {
-                return <li key={member}>{member}</li>;
-              })}
-            </ul>
-            {bandDisplayed.logoCredits ? <p>Credits: {bandDisplayed.logoCredits}</p> : null}
+            {bandDisplayed.members.length > 1 ? (
+              <>
+                <p> Members :</p>
+                <ul className="members-list" aria-label="Members:">
+                  {bandDisplayed.members.map((member) => {
+                    return <li key={member}>{member}</li>;
+                  })}
+                </ul>
+              </>
+            ) : (
+              <p>
+                {" "}
+                Members : <span> {bandDisplayed.members}</span>
+              </p>
+            )}
           </div>
+          {bandDisplayed.logoCredits && (
+            <div className="credits-section">
+              <p>Credits:</p>
+              <p>{bandDisplayed.logoCredits}</p>
+            </div>
+          )}
         </div>
 
         <div className="live-next">
           <h3>
             See <span>{bandDisplayed.name}</span> live:
           </h3>
-          <h4>Tuesday, July 18th</h4>
-          <BandCard page={page} />
+
+          <h4>
+            {bandData.day}, July{" "}
+            {bandData.day === "Monday"
+              ? "17th"
+              : bandData.day === "Tuesday"
+              ? "18th"
+              : bandData.day === "Wednesday"
+              ? "19th"
+              : bandData.day === "Thursday"
+              ? "20th"
+              : bandData.day === "Friday"
+              ? "21st"
+              : bandData.day === "Saturday"
+              ? "22nd"
+              : bandData.day === "Sunday"
+              ? "23rd"
+              : null}
+          </h4>
+          <div className="band-card band-page-band-card">
+            <div className="band-card-content">
+              <div className="band-card-main-content band-page-details-card">
+                <h4>{bandData.stage}</h4>
+                <p>
+                  {bandData.start} - {bandData.end}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
