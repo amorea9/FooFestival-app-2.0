@@ -3,7 +3,7 @@ function PlayingNow(props) {
     return (
       <article id="playingNow" className="playing-now-comp">
         <h2>
-          Playing now <span>.</span>
+          Playing now <span className="playing-now-dot"></span>
         </h2>
         <div className="playing-now-none">
           <article>
@@ -16,7 +16,10 @@ function PlayingNow(props) {
   } else {
     return (
       <article id="playingNow" className="playing-now-comp">
-        <h2 className="playing-now-headline">Playing now</h2>
+        <h2>
+          Playing now <span className="playing-now-dot"></span>
+        </h2>
+        {/* <h2 className="playing-now-headline">Playing now</h2> */}
         <div className="playing-now-content">
           <article className="playing-now-band">
             <h3>{props.liveNow.jotunheimLiveState}</h3>

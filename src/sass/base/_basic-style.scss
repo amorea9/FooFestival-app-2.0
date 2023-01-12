@@ -95,7 +95,13 @@ button {
 }
 //heart icon
 .empty-heart-icon:hover {
+  filter: invert(45%) sepia(45%) saturate(3993%) hue-rotate(330deg) brightness(90%) contrast(85%);
+}
+.full-heart-icon {
   filter: invert(63%) sepia(45%) saturate(3993%) hue-rotate(330deg) brightness(90%) contrast(85%);
+}
+.full-heart-icon:hover {
+  filter: invert(60%);
 }
 
 //message on favourites page

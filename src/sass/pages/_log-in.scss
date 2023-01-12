@@ -21,13 +21,15 @@
   flex-direction: column;
   width: 66%;
 }
+
 .log-in-button {
-  padding: 0.8rem 4.2rem;
+  padding: 0.8rem 4rem;
   border-radius: 12px;
-  border: 1px solid $white;
-  background-color: $grey;
+  border: 1.5px solid $grey;
+  background-color: transparent;
   cursor: pointer;
   font-size: 1.1rem;
+  color: $grey;
 }
 #email,
 #ticketNumber {
@@ -50,5 +52,11 @@
   }
 }
 form:valid .log-in-button {
-  background-color: $white;
+  border-color: $white;
+  color: $white;
+  transition: all 300ms ease-out;
+}
+form:valid .log-in-button:hover {
+  border-color: $orange;
+  transition: all 300ms ease-out;
 }

@@ -6,7 +6,7 @@ import "../sass/style.scss";
 import { Outlet } from "react-router-dom";
 import TopNav from "../components/Reusable components/TopNav";
 
-function App() {
+function App(props) {
   //state used to determine if the user is logged in or not
   const [login, setLogin] = useState(false);
   //state for scheduled bands. app knows so that all the routes may know
@@ -27,6 +27,8 @@ function App() {
   const [dateNow, setdateNow] = useState({
     today: 0,
   });
+  //favourite list
+  const [favouriteList, setFavouriteList] = useState([]);
 
   //fetching data
   useEffect(() => {
@@ -35,10 +37,11 @@ function App() {
       const schedule = await res.json();
       setScheduledBands(schedule);
       console.log(schedule);
-      //call the function every minute
+      findLiveBands(schedule);
+      //call the function every hour
       setInterval(() => {
         findLiveBands(schedule);
-      }, 10000);
+      }, 3600000);
     }
     getSchedule();
   }, []);
@@ -109,22 +112,25 @@ function App() {
       if (jotunheimToday != "break" && currentTime > jotunheimStart && currentTime < jotunheimEnd) {
         //get index of event object
         liveIndex = todayAtJotunheim.indexOf(show);
+        console.log(liveIndex);
         liveAtJotunheim = show.act;
         isFoofestLive = true;
         // find next up
-        //get index of next event object
-        nextUp = liveIndex + 1;
-        //check if next event is "break"
-        if (todayAtJotunheim[nextUp].act === "break") {
-          nextUp = liveIndex + 2;
-          nextActJotunheim = todayAtJotunheim[nextUp].act;
-          nextUpStart = todayAtJotunheim[nextUp].start;
-          nextLiveAtJotunheim = nextActJotunheim;
-        }
+        //get index of next event object excluding break
+        nextUp = liveIndex + 2;
+
         nextUpStart = todayAtJotunheim[nextUp].start;
         nextActJotunheim = todayAtJotunheim[nextUp].act;
         nextLiveAtJotunheim = nextActJotunheim;
       }
+      // } else {
+      //   if (todayAtJotunheim[nextUp].act === "break") {
+      //     nextUp = liveIndex + 2;
+      //     nextActJotunheim = todayAtJotunheim[nextUp].act;
+      //     nextUpStart = todayAtJotunheim[nextUp].start;
+      //     nextLiveAtJotunheim = nextActJotunheim;
+      //   }
+      // }
     });
 
     //Find live at Midagard
@@ -146,18 +152,20 @@ function App() {
         liveAtMidgard = show.act;
         isFoofestLive = true;
 
-        //get index of next event object
-        nextUp = liveIndex + 1;
-        //check if next event is "break"
-        if (todayAtMidgard[nextUp].act === "break") {
-          nextUp = liveIndex + 2;
-          nextActMidgard = todayAtMidgard[nextUp].act;
+        //get index of next event object excluding break
+        nextUp = liveIndex + 2;
 
-          nextLiveAtMidgard = nextActMidgard;
-        }
         nextActMidgard = todayAtMidgard[nextUp].act;
         nextLiveAtMidgard = nextActMidgard;
       }
+      // } else {
+      //   if (todayAtMidgard[nextUp].act === "break") {
+      //     nextUp = liveIndex + 2;
+      //     nextActMidgard = todayAtMidgard[nextUp].act;
+
+      //     nextLiveAtMidgard = nextActMidgard;
+      //   }
+      // }
     });
 
     //Find live at Vanaheim
@@ -178,18 +186,20 @@ function App() {
         liveAtVanaheim = show.act;
         isFoofestLive = true;
 
-        //find next up
-        nextUp = liveIndex + 1;
-        //check if next event is "break"
-        if (todayAtVanaheim[nextUp].act === "break") {
-          nextUp = liveIndex + 2;
-          nextActVanaheim = todayAtVanaheim[nextUp].act;
+        //get index of next event object excluding break
+        nextUp = liveIndex + 2;
 
-          nextLiveAtVanaheim = nextActVanaheim;
-        }
         nextActVanaheim = todayAtVanaheim[nextUp].act;
         nextLiveAtVanaheim = nextActVanaheim;
       }
+      // } else {
+      //   if (todayAtVanaheim[nextUp].act === "break") {
+      //     nextUp = liveIndex + 2;
+      //     nextActVanaheim = todayAtVanaheim[nextUp].act;
+
+      //     nextLiveAtVanaheim = nextActVanaheim;
+      //   }
+      // }
       setLiveNow({
         ...liveNow,
         vanaheimLiveState: liveAtVanaheim,
@@ -216,6 +226,7 @@ function App() {
             schedule: [scheduledBands, setScheduledBands],
             live: [liveNow, setLiveNow],
             date: [dateNow, setdateNow],
+            favourites: [favouriteList, setFavouriteList],
           }}
         />
       )}

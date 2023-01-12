@@ -16,9 +16,24 @@ function BandsList(props) {
       {props.filter.search && props.filter.day === "Sunday" ? <h2> Results for "{props.filter.search}"</h2> : props.filter.day === "Sunday" ? <h2>Sunday, July 23rd</h2> : null}
       <div className="bands-list-wrapper">
         {props.filteredList.map((show) => {
-          return show.act != "break" ? <BandCard key={show.act} start={show.start} end={show.end} stage={show.stage} day={show.day} bandName={show.act} /> : null;
+          return show.act != "break" ? (
+            <BandCard
+              start={show.start}
+              end={show.end}
+              stage={show.stage}
+              day={show.day}
+              act={show.act}
+              bandName={show.act}
+              key={show.act}
+              id={Date.now()}
+              addBandToFavourites={props.addBandToFavourites}
+              removeBandFromFavourites={props.removeBandFromFavourites}
+              favouriteList={props.favouriteList}
+              data={props.filteredList}
+            />
+          ) : null;
         })}
-      </div>{" "}
+      </div>
     </div>
   );
 }
