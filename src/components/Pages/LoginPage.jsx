@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import orangeArrow from "../../media/right-orange-arrow.svg";
 
 function LoginPage(props) {
   const navigate = useNavigate();
@@ -30,12 +31,12 @@ function LoginPage(props) {
           <h3>Log in</h3>
           <div className="email-input">
             <label htmlFor="email"> Email</label>
-            <input required pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" title="Must be a valid email address" aria-required="true" autoFocus id="email" type="email" name="email" placeholder="JohnDoe@gmail.com" />
+            <input required pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" title="Enter a valid email address" aria-required="true" autoFocus id="email" type="email" name="email" placeholder="JohnDoe@gmail.com" />
           </div>
           <div className="ticket-number-input">
             <label htmlFor="ticketNumber">Ticket number </label>
             <input
-              title="Must be a valid Ticket Number"
+              title="Ticket number must be 9 characters long"
               required
               pattern="[A-Za-z0-9]{9,9}"
               aria-required="true"
