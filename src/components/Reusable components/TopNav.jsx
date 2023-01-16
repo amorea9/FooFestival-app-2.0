@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import logo from "../../media/foofest-logo.png";
+import logo from "../../media/foofest-logo.webp";
 
 function TopNav(props) {
   const navigate = useNavigate();
